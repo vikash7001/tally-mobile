@@ -1,0 +1,35 @@
+; -----------------------------
+; Mobile Stock Summary – V1
+; -----------------------------
+
+[Report: MobileStockSummary]
+Use     : DSP Template
+Form    : MobileStockSummaryForm
+Title   : "Mobile Stock Summary"
+
+[Form: MobileStockSummaryForm]
+Parts   : MobileStockSummaryPart
+
+[Part: MobileStockSummaryPart]
+Lines   : MobileStockSummaryLine
+Repeat  : MobileStockSummaryLine : MobileStockSummaryCollection
+Scroll  : Vertical
+
+[Collection: MobileStockSummaryCollection]
+Type    : StockItem
+Fetch   : Name, BaseUnits
+
+[Line: MobileStockSummaryLine]
+Fields  : MSS_Item, MSS_Qty, MSS_Unit
+
+[Field: MSS_Item]
+Use     : Name Field
+Set as  : $Name
+
+[Field: MSS_Qty]
+Use     : Qty Field
+Set as  : $ClosingBalance
+
+[Field: MSS_Unit]
+Use     : Name Field
+Set as  : $BaseUnits
