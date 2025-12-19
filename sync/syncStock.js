@@ -4,12 +4,10 @@ const { DOMParser } = require("xmldom");
 
 // DB
 const db = new Client({
-  host: "localhost",
-  user: "postgres",
-  password: "postgres123",
-  database: "tally_mobile",
-  port: 5432
+  connectionString: "postgresql://postgres.gpaphirqgopigyjqdegt:postgres123@aws-1-ap-northeast-1.pooler.supabase.com:5432/postgres",
+  ssl: { rejectUnauthorized: false }
 });
+
 
 // Tally XML request
 const tallyXML = `
@@ -71,5 +69,6 @@ async function run() {
 }
 
 run().catch(err => {
-  console.error("Sync failed:", err.message);
+  console.error("FULL ERROR:", err);
 });
+
